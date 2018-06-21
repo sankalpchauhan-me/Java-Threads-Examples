@@ -12,25 +12,6 @@ import java.util.logging.Logger;
  *
  * @author sankalp
  */
-class Runner extends Thread{
-
-    @Override
-    public void run() {
-        for(int i=0; i <=9; i++){
-            System.out.println("Thread " + i + " is Running");
-        }
-        
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Runner.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-}
-
-
-
 public class Threads {
 
     /**
@@ -38,10 +19,18 @@ public class Threads {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Runner t1 = new Runner();
-        Runner t2 = new Runner();
-        t1.start();
-        t2.start();
+       Thread thread1= new Thread(new Runnable()
+            @Override
+            public void run() {
+                for (int i = 0; i < 5; i++) {
+                    System.out.println("Hello: " + i + " Thread: " + Thread.currentThread().getName());
+
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ignored) {}
+                }
+            }
+        });
         
         
         
